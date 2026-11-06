@@ -1,0 +1,20 @@
+{
+  "name": "tutti-pdf-converter",
+  "interface": {
+    "displayName": "Tutti PDF Converter"
+  },
+  "plugins": [
+    {
+      "name": "sheet-music-pdf-convert",
+      "source": {
+        "source": "local",
+        "path": "./plugins/sheet-music-pdf-convert"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

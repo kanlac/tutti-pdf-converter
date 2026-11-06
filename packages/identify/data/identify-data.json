@@ -1,0 +1,1526 @@
+{
+  "admissionParams": {
+    "body_min_glyphs": 8,
+    "body_share": 0.2
+  },
+  "dataVersion": "sha256:e1945dfbe24c9204f760b501d986c297c71cda1ba49903167ab6170c03239c34",
+  "exporters": [
+    {
+      "fontSets": [
+        [
+          "Opus"
+        ],
+        [
+          "Helsinki"
+        ],
+        [
+          "Norfolk"
+        ]
+      ],
+      "id": "sibelius",
+      "meta": {
+        "flags": "i",
+        "source": "\\bsibelius\\b"
+      },
+      "name": "Sibelius"
+    },
+    {
+      "fontSets": [
+        [
+          "Leland"
+        ],
+        [
+          "MScore"
+        ],
+        [
+          "MuseJazz"
+        ]
+      ],
+      "id": "musescore",
+      "meta": {
+        "flags": "i",
+        "source": "\\bmusescore\\b"
+      },
+      "name": "MuseScore"
+    },
+    {
+      "fontSets": [
+        [
+          "Maestro"
+        ],
+        [
+          "FinaleMaestro"
+        ],
+        [
+          "EngraverFontSet"
+        ],
+        [
+          "Petrucci",
+          "Tamburo"
+        ]
+      ],
+      "id": "finale",
+      "meta": {
+        "flags": "i",
+        "source": "\\bfinale\\b"
+      },
+      "name": "Finale"
+    },
+    {
+      "fontSets": [
+        [
+          "Bravura",
+          "Academico"
+        ]
+      ],
+      "id": "dorico",
+      "meta": {
+        "flags": "i",
+        "source": "\\bdorico\\b"
+      },
+      "name": "Dorico"
+    }
+  ],
+  "families": {
+    "Bravura": "bravura",
+    "BravuraTextRegular": "bravura-text",
+    "EngraverFontSet": "engraver",
+    "EngraverTextT": "engraver-text",
+    "FinaleMaestro": "finalemaestro",
+    "FinaleMaestroText": "finalemaestro-text",
+    "FinaleNumerics": "finale-numerics",
+    "HelsinkiSpecialStd": "opus-special",
+    "HelsinkiStd": "opus",
+    "HelsinkiTextStd": "opus-text",
+    "Jazz": "jazz",
+    "Leland": "leland",
+    "LelandText": "leland-text",
+    "MScore": "mscore",
+    "MScoreRegular": "mscore",
+    "MScoreTextRegular": "mscore-text",
+    "Maestro": "maestro",
+    "Maestro03001729": "maestro",
+    "MaestroWide": "maestro-wide",
+    "MuseJazz": "musejazz",
+    "MuseJazzText": "musejazz-text",
+    "NorfolkSpecialStd": "opus-special",
+    "NorfolkStd": "opus",
+    "NorfolkTextStd": "opus-text",
+    "Opus": "opus-legacy",
+    "OpusFiguredBass": "opus-figured-bass",
+    "OpusPercussionStd": "opus-percussion",
+    "OpusSpecial": "opus-special-legacy",
+    "OpusSpecialStd": "opus-special",
+    "OpusStd": "opus",
+    "OpusText": "opus-text",
+    "OpusTextStd": "opus-text",
+    "Petaluma": "petaluma",
+    "Petrucci": "petrucci",
+    "Sebastian": "sebastian"
+  },
+  "familyKinds": {
+    "bravura": "music",
+    "bravura-text": "text",
+    "engraver": "music",
+    "engraver-text": "text",
+    "finale-numerics": "music",
+    "finalemaestro": "music",
+    "finalemaestro-text": "text",
+    "jazz": "music",
+    "leland": "music",
+    "leland-text": "text",
+    "maestro": "music",
+    "maestro-wide": "music",
+    "mscore": "music",
+    "mscore-text": "text",
+    "musejazz": "music",
+    "musejazz-text": "text",
+    "opus": "music",
+    "opus-figured-bass": "text",
+    "opus-legacy": "music",
+    "opus-percussion": "music",
+    "opus-special": "music",
+    "opus-special-legacy": "music",
+    "opus-text": "text",
+    "petaluma": "music",
+    "petrucci": "music",
+    "sebastian": "music"
+  },
+  "limits": {
+    "pdfBytes": 26214400,
+    "pdfPages": 500
+  },
+  "profiles": [
+    {
+      "detect": {},
+      "enabled": false,
+      "id": "*",
+      "specificity": 0
+    },
+    {
+      "detect": {
+        "any_of": [
+          {
+            "meta": {
+              "producer": {
+                "flags": "i",
+                "source": "sibelius"
+              }
+            }
+          },
+          {
+            "meta": {
+              "creator": {
+                "flags": "i",
+                "source": "sibelius"
+              }
+            }
+          },
+          {
+            "all_of": [
+              {
+                "font_family": "opus"
+              },
+              {
+                "font_family": "opus-text"
+              }
+            ]
+          },
+          {
+            "all_of": [
+              {
+                "font_family": "opus-legacy"
+              },
+              {
+                "font_family": "opus-special-legacy"
+              }
+            ]
+          }
+        ]
+      },
+      "enabled": true,
+      "id": "sibelius",
+      "specificity": 10
+    },
+    {
+      "detect": {
+        "any_of": [
+          {
+            "meta": {
+              "producer": {
+                "flags": "i",
+                "source": "\\bmusescore\\b"
+              }
+            }
+          },
+          {
+            "meta": {
+              "creator": {
+                "flags": "i",
+                "source": "\\bmusescore\\b"
+              }
+            }
+          },
+          {
+            "font_family": "leland"
+          },
+          {
+            "font_family": "mscore"
+          },
+          {
+            "font_family": "musejazz"
+          }
+        ]
+      },
+      "enabled": true,
+      "id": "musescore",
+      "specificity": 10
+    },
+    {
+      "detect": {
+        "any_of": [
+          {
+            "meta": {
+              "producer": {
+                "flags": "i",
+                "source": "\\bdorico\\b"
+              }
+            }
+          },
+          {
+            "meta": {
+              "creator": {
+                "flags": "i",
+                "source": "\\bdorico\\b"
+              }
+            }
+          }
+        ]
+      },
+      "enabled": true,
+      "id": "dorico",
+      "specificity": 10
+    },
+    {
+      "detect": {
+        "any_of": [
+          {
+            "meta": {
+              "producer": {
+                "flags": "i",
+                "source": "\\bfinale\\b"
+              }
+            }
+          },
+          {
+            "meta": {
+              "creator": {
+                "flags": "i",
+                "source": "\\bfinale\\b"
+              }
+            }
+          },
+          {
+            "font_family": "finalemaestro"
+          },
+          {
+            "font_family": "maestro"
+          },
+          {
+            "font_family": "maestro-wide"
+          },
+          {
+            "font_family": "engraver"
+          },
+          {
+            "font_family": "petrucci"
+          }
+        ]
+      },
+      "enabled": true,
+      "id": "finale",
+      "specificity": 10
+    }
+  ],
+  "releases": [
+    {
+      "enabled": true,
+      "engine": "sibelius",
+      "family": "opus",
+      "fonts": [
+        "HelsinkiStd",
+        "OpusStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": true,
+      "engine": "sibelius",
+      "family": "opus-percussion",
+      "fonts": [
+        "OpusPercussionStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": true,
+      "engine": "sibelius",
+      "family": "opus-special",
+      "fonts": [
+        "HelsinkiSpecialStd",
+        "OpusSpecialStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": true,
+      "engine": "sibelius",
+      "family": "opus-text",
+      "fonts": [
+        "HelsinkiTextStd",
+        "OpusTextStd"
+      ],
+      "text_fonts": [
+        "HelsinkiTextStd",
+        "OpusTextStd"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "bravura",
+      "fonts": [
+        "Bravura"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "leland",
+      "fonts": [
+        "Leland"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "leland-text",
+      "fonts": [
+        "LelandText"
+      ],
+      "text_fonts": [
+        "LelandText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "bravura-text",
+      "fonts": [
+        "BravuraTextRegular"
+      ],
+      "text_fonts": [
+        "BravuraTextRegular"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "mscore",
+      "fonts": [
+        "MScore",
+        "MScoreRegular"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "mscore-text",
+      "fonts": [
+        "MScoreTextRegular"
+      ],
+      "text_fonts": [
+        "MScoreTextRegular"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "musejazz",
+      "fonts": [
+        "MuseJazz"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "musejazz-text",
+      "fonts": [
+        "MuseJazzText"
+      ],
+      "text_fonts": [
+        "MuseJazzText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "finalemaestro",
+      "fonts": [
+        "FinaleMaestro"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "finalemaestro-text",
+      "fonts": [
+        "FinaleMaestroText"
+      ],
+      "text_fonts": [
+        "FinaleMaestroText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "opus-legacy",
+      "fonts": [
+        "Opus"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "opus-special-legacy",
+      "fonts": [
+        "OpusSpecial"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "opus-figured-bass",
+      "fonts": [
+        "OpusFiguredBass"
+      ],
+      "text_fonts": [
+        "OpusFiguredBass"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "maestro",
+      "fonts": [
+        "Maestro",
+        "Maestro03001729"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "maestro-wide",
+      "fonts": [
+        "MaestroWide"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "engraver",
+      "fonts": [
+        "EngraverFontSet"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "petrucci",
+      "fonts": [
+        "Petrucci"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "finale-numerics",
+      "fonts": [
+        "FinaleNumerics"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "engraver-text",
+      "fonts": [
+        "EngraverTextT"
+      ],
+      "text_fonts": [
+        "EngraverTextT"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "jazz",
+      "fonts": [
+        "Jazz"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "norfolk",
+      "fonts": [
+        "NorfolkStd",
+        "NorfolkSpecialStd",
+        "NorfolkTextStd"
+      ],
+      "text_fonts": [
+        "NorfolkTextStd"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "opus",
+      "fonts": [
+        "HelsinkiStd",
+        "OpusStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "opus-percussion",
+      "fonts": [
+        "OpusPercussionStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "opus-special",
+      "fonts": [
+        "HelsinkiSpecialStd",
+        "OpusSpecialStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "opus-text",
+      "fonts": [
+        "HelsinkiTextStd",
+        "OpusTextStd"
+      ],
+      "text_fonts": [
+        "HelsinkiTextStd",
+        "OpusTextStd"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "bravura",
+      "fonts": [
+        "Bravura"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": true,
+      "engine": "musescore",
+      "family": "leland",
+      "fonts": [
+        "Leland"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": true,
+      "engine": "musescore",
+      "family": "leland-text",
+      "fonts": [
+        "LelandText"
+      ],
+      "text_fonts": [
+        "LelandText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "bravura-text",
+      "fonts": [
+        "BravuraTextRegular"
+      ],
+      "text_fonts": [
+        "BravuraTextRegular"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "mscore",
+      "fonts": [
+        "MScore",
+        "MScoreRegular"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "mscore-text",
+      "fonts": [
+        "MScoreTextRegular"
+      ],
+      "text_fonts": [
+        "MScoreTextRegular"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "musejazz",
+      "fonts": [
+        "MuseJazz"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "musejazz-text",
+      "fonts": [
+        "MuseJazzText"
+      ],
+      "text_fonts": [
+        "MuseJazzText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "finalemaestro",
+      "fonts": [
+        "FinaleMaestro"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "finalemaestro-text",
+      "fonts": [
+        "FinaleMaestroText"
+      ],
+      "text_fonts": [
+        "FinaleMaestroText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "opus-legacy",
+      "fonts": [
+        "Opus"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "opus-special-legacy",
+      "fonts": [
+        "OpusSpecial"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "opus-figured-bass",
+      "fonts": [
+        "OpusFiguredBass"
+      ],
+      "text_fonts": [
+        "OpusFiguredBass"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "maestro",
+      "fonts": [
+        "Maestro",
+        "Maestro03001729"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "maestro-wide",
+      "fonts": [
+        "MaestroWide"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "engraver",
+      "fonts": [
+        "EngraverFontSet"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "petrucci",
+      "fonts": [
+        "Petrucci"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "finale-numerics",
+      "fonts": [
+        "FinaleNumerics"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "engraver-text",
+      "fonts": [
+        "EngraverTextT"
+      ],
+      "text_fonts": [
+        "EngraverTextT"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "jazz",
+      "fonts": [
+        "Jazz"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "norfolk",
+      "fonts": [
+        "NorfolkStd",
+        "NorfolkSpecialStd",
+        "NorfolkTextStd"
+      ],
+      "text_fonts": [
+        "NorfolkTextStd"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "opus",
+      "fonts": [
+        "HelsinkiStd",
+        "OpusStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "opus-percussion",
+      "fonts": [
+        "OpusPercussionStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "opus-special",
+      "fonts": [
+        "HelsinkiSpecialStd",
+        "OpusSpecialStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "opus-text",
+      "fonts": [
+        "HelsinkiTextStd",
+        "OpusTextStd"
+      ],
+      "text_fonts": [
+        "HelsinkiTextStd",
+        "OpusTextStd"
+      ]
+    },
+    {
+      "enabled": true,
+      "engine": "dorico",
+      "family": "bravura",
+      "fonts": [
+        "Bravura"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "leland",
+      "fonts": [
+        "Leland"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "leland-text",
+      "fonts": [
+        "LelandText"
+      ],
+      "text_fonts": [
+        "LelandText"
+      ]
+    },
+    {
+      "enabled": true,
+      "engine": "dorico",
+      "family": "bravura-text",
+      "fonts": [
+        "BravuraTextRegular"
+      ],
+      "text_fonts": [
+        "BravuraTextRegular"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "mscore",
+      "fonts": [
+        "MScore",
+        "MScoreRegular"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "mscore-text",
+      "fonts": [
+        "MScoreTextRegular"
+      ],
+      "text_fonts": [
+        "MScoreTextRegular"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "musejazz",
+      "fonts": [
+        "MuseJazz"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "musejazz-text",
+      "fonts": [
+        "MuseJazzText"
+      ],
+      "text_fonts": [
+        "MuseJazzText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "finalemaestro",
+      "fonts": [
+        "FinaleMaestro"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "finalemaestro-text",
+      "fonts": [
+        "FinaleMaestroText"
+      ],
+      "text_fonts": [
+        "FinaleMaestroText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "opus-legacy",
+      "fonts": [
+        "Opus"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "opus-special-legacy",
+      "fonts": [
+        "OpusSpecial"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "opus-figured-bass",
+      "fonts": [
+        "OpusFiguredBass"
+      ],
+      "text_fonts": [
+        "OpusFiguredBass"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "maestro",
+      "fonts": [
+        "Maestro",
+        "Maestro03001729"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "maestro-wide",
+      "fonts": [
+        "MaestroWide"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "engraver",
+      "fonts": [
+        "EngraverFontSet"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "petrucci",
+      "fonts": [
+        "Petrucci"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "finale-numerics",
+      "fonts": [
+        "FinaleNumerics"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "engraver-text",
+      "fonts": [
+        "EngraverTextT"
+      ],
+      "text_fonts": [
+        "EngraverTextT"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "jazz",
+      "fonts": [
+        "Jazz"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "norfolk",
+      "fonts": [
+        "NorfolkStd",
+        "NorfolkSpecialStd",
+        "NorfolkTextStd"
+      ],
+      "text_fonts": [
+        "NorfolkTextStd"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "opus",
+      "fonts": [
+        "HelsinkiStd",
+        "OpusStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "opus-percussion",
+      "fonts": [
+        "OpusPercussionStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "opus-special",
+      "fonts": [
+        "HelsinkiSpecialStd",
+        "OpusSpecialStd"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "opus-text",
+      "fonts": [
+        "HelsinkiTextStd",
+        "OpusTextStd"
+      ],
+      "text_fonts": [
+        "HelsinkiTextStd",
+        "OpusTextStd"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "bravura",
+      "fonts": [
+        "Bravura"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "leland",
+      "fonts": [
+        "Leland"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "leland-text",
+      "fonts": [
+        "LelandText"
+      ],
+      "text_fonts": [
+        "LelandText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "bravura-text",
+      "fonts": [
+        "BravuraTextRegular"
+      ],
+      "text_fonts": [
+        "BravuraTextRegular"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "mscore",
+      "fonts": [
+        "MScore",
+        "MScoreRegular"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "mscore-text",
+      "fonts": [
+        "MScoreTextRegular"
+      ],
+      "text_fonts": [
+        "MScoreTextRegular"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "musejazz",
+      "fonts": [
+        "MuseJazz"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "musejazz-text",
+      "fonts": [
+        "MuseJazzText"
+      ],
+      "text_fonts": [
+        "MuseJazzText"
+      ]
+    },
+    {
+      "enabled": true,
+      "engine": "finale",
+      "family": "finalemaestro",
+      "fonts": [
+        "FinaleMaestro"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": true,
+      "engine": "finale",
+      "family": "finalemaestro-text",
+      "fonts": [
+        "FinaleMaestroText"
+      ],
+      "text_fonts": [
+        "FinaleMaestroText"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "opus-legacy",
+      "fonts": [
+        "Opus"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "opus-special-legacy",
+      "fonts": [
+        "OpusSpecial"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "opus-figured-bass",
+      "fonts": [
+        "OpusFiguredBass"
+      ],
+      "text_fonts": [
+        "OpusFiguredBass"
+      ]
+    },
+    {
+      "enabled": true,
+      "engine": "finale",
+      "family": "maestro",
+      "fonts": [
+        "Maestro",
+        "Maestro03001729"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "maestro-wide",
+      "fonts": [
+        "MaestroWide"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "engraver",
+      "fonts": [
+        "EngraverFontSet"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "petrucci",
+      "fonts": [
+        "Petrucci"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "finale-numerics",
+      "fonts": [
+        "FinaleNumerics"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "engraver-text",
+      "fonts": [
+        "EngraverTextT"
+      ],
+      "text_fonts": [
+        "EngraverTextT"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "jazz",
+      "fonts": [
+        "Jazz"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "norfolk",
+      "fonts": [
+        "NorfolkStd",
+        "NorfolkSpecialStd",
+        "NorfolkTextStd"
+      ],
+      "text_fonts": [
+        "NorfolkTextStd"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "inkpen2",
+      "fonts": [
+        "Inkpen2",
+        "Inkpen2Std",
+        "Inkpen2SpecialStd",
+        "Inkpen2TextStd",
+        "Inkpen2Chords"
+      ],
+      "text_fonts": [
+        "Inkpen2TextStd",
+        "Inkpen2Chords"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "reprise",
+      "fonts": [
+        "Reprise",
+        "RepriseStd",
+        "RepriseSpecialStd",
+        "RepriseTextStd",
+        "RepriseChords"
+      ],
+      "text_fonts": [
+        "RepriseTextStd",
+        "RepriseChords"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "inkpen2",
+      "fonts": [
+        "Inkpen2",
+        "Inkpen2Std",
+        "Inkpen2SpecialStd",
+        "Inkpen2TextStd",
+        "Inkpen2Chords"
+      ],
+      "text_fonts": [
+        "Inkpen2TextStd",
+        "Inkpen2Chords"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "reprise",
+      "fonts": [
+        "Reprise",
+        "RepriseStd",
+        "RepriseSpecialStd",
+        "RepriseTextStd",
+        "RepriseChords"
+      ],
+      "text_fonts": [
+        "RepriseTextStd",
+        "RepriseChords"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "inkpen2",
+      "fonts": [
+        "Inkpen2",
+        "Inkpen2Std",
+        "Inkpen2SpecialStd",
+        "Inkpen2TextStd",
+        "Inkpen2Chords"
+      ],
+      "text_fonts": [
+        "Inkpen2TextStd",
+        "Inkpen2Chords"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "reprise",
+      "fonts": [
+        "Reprise",
+        "RepriseStd",
+        "RepriseSpecialStd",
+        "RepriseTextStd",
+        "RepriseChords"
+      ],
+      "text_fonts": [
+        "RepriseTextStd",
+        "RepriseChords"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "inkpen2",
+      "fonts": [
+        "Inkpen2",
+        "Inkpen2Std",
+        "Inkpen2SpecialStd",
+        "Inkpen2TextStd",
+        "Inkpen2Chords"
+      ],
+      "text_fonts": [
+        "Inkpen2TextStd",
+        "Inkpen2Chords"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "reprise",
+      "fonts": [
+        "Reprise",
+        "RepriseStd",
+        "RepriseSpecialStd",
+        "RepriseTextStd",
+        "RepriseChords"
+      ],
+      "text_fonts": [
+        "RepriseTextStd",
+        "RepriseChords"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "symbol-text",
+      "fonts": [
+        "SymbolMT",
+        "Symbol",
+        "Wingdings-Regular",
+        "Wingdings"
+      ],
+      "text_fonts": [
+        "SymbolMT",
+        "Symbol",
+        "Wingdings-Regular",
+        "Wingdings"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "finale",
+      "family": "symbol-text",
+      "fonts": [
+        "SymbolMT",
+        "Symbol",
+        "Wingdings-Regular",
+        "Wingdings"
+      ],
+      "text_fonts": [
+        "SymbolMT",
+        "Symbol",
+        "Wingdings-Regular",
+        "Wingdings"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "musescore",
+      "family": "symbol-text",
+      "fonts": [
+        "SymbolMT",
+        "Symbol",
+        "Wingdings-Regular",
+        "Wingdings"
+      ],
+      "text_fonts": [
+        "SymbolMT",
+        "Symbol",
+        "Wingdings-Regular",
+        "Wingdings"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "sibelius",
+      "family": "symbol-text",
+      "fonts": [
+        "SymbolMT",
+        "Symbol",
+        "Wingdings-Regular",
+        "Wingdings"
+      ],
+      "text_fonts": [
+        "SymbolMT",
+        "Symbol",
+        "Wingdings-Regular",
+        "Wingdings"
+      ]
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "sebastian",
+      "fonts": [
+        "Sebastian"
+      ],
+      "text_fonts": []
+    },
+    {
+      "enabled": false,
+      "engine": "dorico",
+      "family": "petaluma",
+      "fonts": [
+        "Petaluma"
+      ],
+      "text_fonts": []
+    }
+  ],
+  "schemaVersion": 1
+}

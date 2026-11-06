@@ -1,0 +1,8 @@
+{
+  "package": "@cantoo/pdf-lib",
+  "version": "2.11.1",
+  "license": "MIT",
+  "source": "https://github.com/cantoo-scribe/pdf-lib",
+  "artifact": "pdf-lib.esm.min.js",
+  "note": "Vendored from the Tutti browser precheck distribution; the matching license is retained."
+}

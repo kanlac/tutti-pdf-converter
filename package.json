@@ -1,0 +1,21 @@
+{
+  "name": "tutti-pdf-converter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "identify": "./plugins/sheet-music-pdf-convert/skills/sheet-music-pdf-convert/scripts/identify.mjs"
+  },
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "build:check": "node tools/build.mjs --check"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "sheet-music-pdf-convert",
+  "version": "0.1.0",
+  "description": "Convert sheet music PDFs to editable MusicXML.",
+  "license": "MIT",
+  "skills": "./skills/"
+}

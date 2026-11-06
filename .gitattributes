@@ -1,0 +1,2 @@
+# Generated pdf-lib code includes literal PDF xref padding at line ends.
+plugins/sheet-music-pdf-convert/skills/sheet-music-pdf-convert/scripts/identify.mjs -whitespace
