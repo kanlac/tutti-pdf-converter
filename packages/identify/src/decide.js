@@ -55,6 +55,10 @@ function suitability(kind, pages, source, rules) {
     || rules.releases.some(row => source.sources.some(({id}) => id === row.engine) && !row.enabled
       && music.some(font => font.names.some(name => row.fonts.includes(name))));
   if (disabled) return {status: 'unlikely', reasons: [reason('snapshot_disabled')]};
+  const privateFonts = pages.flatMap(page => page.privateUseOnlyFonts || []).map(subsetFree);
+  if (privateFonts.some(font => !Object.hasOwn(rules.families, font))) {
+    return {status: 'unknown', reasons: [reason('unregistered_symbols')]};
+  }
   const allowed = admission(source.profile, source.exporter, music, rules);
   return {status: allowed ? 'likely' : 'unknown', reasons: [reason(allowed ? 'try_tutti' : 'unconfirmed')]};
 }

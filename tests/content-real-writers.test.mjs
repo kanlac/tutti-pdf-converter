@@ -136,3 +136,51 @@ test('legacy source fingerprints establish vector evidence without granting unsu
   assert.deepEqual(r.pdf.pages[0].candidateMusicFonts,['Helsinki']);
   assert.deepEqual(r.pdf.pages[0].musicFonts,[]);
 });
+
+test('Contents array members share operands, tokens and strings as one logical content stream',async()=>{
+  const {doc,page}=await document();
+  for (const chunk of ['BT /Mu','sic 12 ','Tf (q',') Tj ET']) {
+    page.node.addContentStream(doc.context.register(doc.context.flateStream(chunk)));
+  }
+  const r=await inspect(doc);assert.equal(r.pdf.kind,'vector');assert.equal(r.tutti.status,'likely');
+  assert.equal(r.pdf.pages[0].complete,true);assert.equal(r.pdf.pages[0].textShows,1);
+});
+
+
+for(const mapping of ['1 beginbfchar <71> <E050> endbfchar', '1 beginbfchar <71> <E0 50> endbfchar',
+  '1 beginbfrange <71> <72> [<E050> <E051>] endbfrange',
+  '1 beginbfrange <71> <72> <E050> endbfrange',
+  '1 beginbfchar <71> <DB80DC01> endbfchar']) {
+  test(`unregistered private-use-only symbols require confirmation: ${mapping}`,async()=>{
+    const {doc,page}=await document();const custom=font(doc,'CustomSymbols');
+    doc.context.lookup(custom).set(N('ToUnicode'),doc.context.register(doc.context.stream(
+      `/CIDInit /ProcSet findresource begin 12 dict begin begincmap /CMapName /Custom def /CMapType 2 def
+1 begincodespacerange <00> <FF> endcodespacerange
+${mapping}
+endcmap CMapName currentdict /CMap defineresource pop end end`)));
+    page.node.setFontDictionary(N('Custom'),custom);
+    content(doc,page,'BT /Music 12 Tf (q) Tj /Custom 12 Tf (q) Tj ET');
+    const r=await inspect(doc);assert.equal(r.pdf.kind,'vector');assert.equal(r.tutti.status,'unknown');
+    assert.equal(r.tutti.reasons[0].code,'unregistered_symbols');
+    assert.ok(r.pdf.pages[0].privateUseOnlyFonts.includes('CustomSymbols'));
+  });
+}
+
+test('ordinary text with an occasional private-use character is not a private-use-only font',async()=>{
+  const {doc,page}=await document();const custom=font(doc,'OrdinaryText');
+  doc.context.lookup(custom).set(N('ToUnicode'),doc.context.register(doc.context.stream(
+    '2 beginbfchar <71> <0071> <72> <E033> endbfchar')));
+  page.node.setFontDictionary(N('Custom'),custom);
+  content(doc,page,'BT /Music 12 Tf (q) Tj /Custom 12 Tf (q) Tj ET');
+  const r=await inspect(doc);assert.equal(r.tutti.status,'likely');
+});
+
+
+test('an inherited Unicode CMap cannot establish that a font has only private-use mappings',async()=>{
+  const {doc,page}=await document();const custom=font(doc,'InheritedText');
+  doc.context.lookup(custom).set(N('ToUnicode'),doc.context.register(doc.context.stream(
+    '/Base-CMap usecmap 1 beginbfchar <71> <E050> endbfchar')));
+  page.node.setFontDictionary(N('Custom'),custom);
+  content(doc,page,'BT /Music 12 Tf (q) Tj /Custom 12 Tf (q) Tj ET');
+  const r=await inspect(doc);assert.equal(r.tutti.status,'likely');
+});

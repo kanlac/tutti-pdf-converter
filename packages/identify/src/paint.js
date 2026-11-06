@@ -1,3 +1,4 @@
+import {privateUseOnly} from './font-evidence.js';
 import {inspectionError} from './messages.js';
 
 const STROKE = new Set(['S', 's', 'B', 'B*', 'b', 'b*']);
@@ -34,7 +35,10 @@ export function paint(op, args, resources, state, ancestors, env) {
   if (SHOW_TEXT.has(op)) {
     ev.textShows++;
     const name = fontName(state.font, lib);
-    if (name) ev.paintedFonts.add(name);
+    if (name) {
+      ev.paintedFonts.add(name);
+      if (privateUseOnly(state.font, lib, env.fontMetadata)) ev.privateUseOnlyFonts.add(name);
+    }
     else throw inspectionError('missing_font');
   }
   if (op === 'Do') paintObject(lookup(resources, 'XObject', args.at(-1)?.value, lib), resources, state, ancestors, env);

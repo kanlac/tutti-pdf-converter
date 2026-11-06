@@ -28,6 +28,7 @@ export const MESSAGES = Object.freeze({
   vector: 'Painted music-font evidence was found, with no scan evidence on the inspected pages.',
   source_conflict: 'Source evidence is ambiguous or conflicting.',
   snapshot_disabled: 'The bundled data does not enable this software or font.',
+  unregistered_symbols: 'An unregistered font uses only private-use Unicode characters. Compatibility needs confirmation.',
   unconfirmed: 'The bundled data cannot confirm compatibility.',
   try_tutti: 'Worth trying Tutti. This is a routing suggestion; confirm compatibility on the website.',
 });

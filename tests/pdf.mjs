@@ -4,7 +4,7 @@ export {lib};
 
 const name = lib.PDFName.of;
 export function content(doc, page, text) {
-  page.node.addContentStream(doc.context.register(doc.context.flateStream(text)));
+  page.node.addContentStream(doc.context.register(doc.context.flateStream(text+'\n')));
 }
 export function image(doc, page, width = 8, height = 8) {
   const ref = doc.context.register(doc.context.stream(new Uint8Array(width * height).fill(255),
