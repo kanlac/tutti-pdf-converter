@@ -1,5 +1,5 @@
 // Object-model evidence adapted from Tutti browser precheck-read.js (MIT).
-import {inspectPage, contentBudget} from './content.js';
+import {inspectPage} from './content.js';
 
 export async function readPdf(input, lib) {
   const bytes = input instanceof ArrayBuffer ? new Uint8Array(input)
@@ -17,8 +17,7 @@ export async function readPdf(input, lib) {
       ? 'encrypted' : 'parse_error'};
   }
   try {
-    const budget = contentBudget();
-    const pages = doc.getPages().map((page, i) => ({page: i + 1, ...inspectPage(page, lib, budget)}));
+    const pages = doc.getPages().map((page, i) => ({page: i + 1, ...inspectPage(page, lib)}));
     const metadata = getter => { try { return getter() || ''; } catch { return ''; } };
     return {...base, pageCount: pages.length, pages, producer: metadata(() => doc.getProducer()),
       creator: metadata(() => doc.getCreator()), failure: pages.length ? null : 'no_pages'};

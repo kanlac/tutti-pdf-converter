@@ -29,6 +29,6 @@ export function* tokens(text) {
     while (i < text.length && !delimiter.test(text[i])) i++;
     if (i === start) throw inspectionError('invalid_token');
     const value = text.slice(start, i).replace(/#([0-9a-f]{2})/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
-    yield {type: name ? 'name' : /^[-+.\d]+$/.test(value) ? 'number' : 'operator', value};
+    yield {type: name ? 'name' : ['true', 'false', 'null'].includes(value) ? 'literal' : /^[-+.\d]+$/.test(value) ? 'number' : 'operator', value};
   }
 }

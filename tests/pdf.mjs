@@ -2,10 +2,15 @@ import * as lib from '../packages/identify/vendor/pdf-lib.esm.min.js';
 import {createHash} from 'node:crypto';
 export {lib};
 
-const PNG = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jvGQAAAAASUVORK5CYII=';
 const name = lib.PDFName.of;
 export function content(doc, page, text) {
   page.node.addContentStream(doc.context.register(doc.context.flateStream(text)));
+}
+export function image(doc, page, width = 8, height = 8) {
+  const ref = doc.context.register(doc.context.stream(new Uint8Array(width * height).fill(255),
+    {Type:'XObject', Subtype:'Image', Width:width, Height:height, ColorSpace:'DeviceGray', BitsPerComponent:8}));
+  page.node.setXObject(name('Image'),ref); content(doc,page,'q 300 0 0 400 0 0 cm /Image Do Q');
+  return ref;
 }
 export function font(doc, fontName = 'OpusStd') {
   return doc.context.register(doc.context.obj({Type:'Font', Subtype:'Type1', BaseFont:fontName}));
@@ -16,8 +21,7 @@ export async function pdf(kinds, {creator = 'Sibelius 7.5', producer = '', unuse
   for (const kind of kinds) {
     const page = doc.addPage([300,400]);
     if (['scan','ocr','imageMusic'].includes(kind)) {
-      const image = await doc.embedPng(PNG);
-      page.drawImage(image,{x:0,y:0,width:300,height:400});
+      image(doc,page);
     }
     if (['vector','renamed','ocr','text','imageMusic'].includes(kind)) {
       page.node.setFontDictionary(name('F1'), font(doc, ['ocr','text'].includes(kind) ? 'Helvetica' : kind === 'renamed' ? 'RenamedMusic' : 'ABCDEF+OpusStd'));

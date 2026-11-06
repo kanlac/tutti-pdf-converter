@@ -5,18 +5,27 @@ function pageKind(page, rules) {
   const painted = page.paintedFonts.map(subsetFree);
   const musicFonts = painted.filter(font => rules.familyKinds[rules.families[font]] === 'music');
   const unknownFonts = painted.filter(font => !Object.hasOwn(rules.families, font));
+  // Like the server exporter, fingerprints can identify legacy music font names
+  // without granting them a decoding registration or release permission.
+  const prefixes = rules.exporters.flatMap(row => row.fontSets.flat());
+  const candidateMusicFonts = unknownFonts.filter(font => !/text/i.test(font)
+    && prefixes.some(prefix => font.startsWith(prefix)));
   let kind = 'unknown';
-  if (page.complete) {
-    if (page.imagePaints) kind = page.textShows || page.pathPaints ? 'mixed' : 'scan';
-    else if (musicFonts.length && !unknownFonts.length) kind = 'vector';
-    else if (page.pathPaints && !page.textShows) kind = 'outlined';
-  }
-  return {...page, musicFonts, unknownFonts, kind};
+  const raster = page.rasterImagePaints ?? page.imagePaints;
+  if (raster && (page.textShows || page.pathPaints)) kind = 'mixed';
+  else if (musicFonts.length || candidateMusicFonts.length) kind = raster ? 'mixed' : 'vector';
+  else if (page.complete && raster) kind = 'scan';
+  else if (page.complete && page.pathPaints && !page.textShows) kind = 'outlined';
+  return {...page, musicFonts, candidateMusicFonts, unknownFonts, kind};
 }
 
 function documentKind(pages) {
-  const kinds = new Set(pages.map(page => page.kind));
-  if (kinds.size === 1) return pages[0]?.kind || 'unknown';
+  // Text-only / empty front matter has no scan or outlined-notation evidence.
+  const musicPages = pages.filter(page => !(page.complete && !page.pathPaints
+    && !(page.rasterImagePaints ?? page.imagePaints) && page.kind === 'unknown'));
+  const withoutCovers = musicPages.length && musicPages.every(page => page.kind === 'vector');
+  const kinds = new Set((withoutCovers ? musicPages : pages).map(page => page.kind));
+  if (kinds.size === 1) return [...kinds][0];
   return 'mixed';
 }
 
