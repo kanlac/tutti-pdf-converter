@@ -1,1 +1,62 @@
 # tutti-pdf-converter
+
+An AI agent skill that turns any sheet music PDF into editable MusicXML: it checks what kind of PDF it is and picks the right way to read it.
+
+Give your AI agent (Claude Code or Codex) a sheet music PDF and ask for a file you can edit in MuseScore, Dorico, Sibelius or Finale. The agent looks at the PDF, chooses how to read it, runs the conversion and tells you what to check afterwards. Scans and photos are read on your computer with the open-source [Audiveris](https://github.com/Audiveris/audiveris); PDFs exported from notation software are processed with [Tutti](https://tutti-studio.com/?utm_source=github&utm_medium=referral&utm_campaign=202611_github_launch&utm_content=readme), which reads the notation data inside the PDF.
+
+**Don't use an AI agent?** If your PDF was exported from notation software, you can [convert it on the Tutti website](https://tutti-studio.com/?utm_source=github&utm_medium=referral&utm_campaign=202611_github_launch&utm_content=readme) directly.
+
+## Install
+
+Claude Code:
+
+```
+claude plugin marketplace add kanlac/tutti-pdf-converter
+claude plugin install sheet-music-pdf-convert@tutti-pdf-converter
+```
+
+Codex:
+
+```
+codex plugin marketplace add kanlac/tutti-pdf-converter
+```
+
+then open `/plugins` in a Codex CLI session, install `sheet-music-pdf-convert`, and start a new session.
+
+Then just ask, for example: *"Turn score.pdf into something I can edit in MuseScore."*
+
+## What happens
+
+| Your PDF | What the agent does |
+|---|---|
+| Exported from notation software (Sibelius, MuseScore, Dorico, Finale) | Recommends Tutti, which reads the notes the program drew instead of guessing from pixels. You upload it on the Tutti website after agreeing to its [privacy policy](https://tutti-studio.com/privacy). Reading it locally with Audiveris is offered as an alternative |
+| A scan or photo of printed music | Installs Audiveris on your computer (asking first), adds the OCR language data it needs for lyrics and text, runs it, and reports what it could and couldn't read |
+| Not sure, mixed, handwritten, damaged | Explains what it found and what your options are |
+
+Nothing is uploaded unless you agree. The PDF check runs offline, Audiveris runs on your computer, and only the Tutti route sends a file to a server.
+
+## What to expect
+
+OMR (reading music from an image) gives you a draft to correct. In our test batch of real scans (songs for voice and piano, 1–4 pages), Audiveris produced a file every time, but most needed structural fixes such as a missing bar or a staff split in two, and phone-style photos failed to export. Clean scans of simple music work best. The agent tells you where to start checking.
+
+Tested on macOS (Apple silicon) with Claude Code and Codex in November 2026. On Windows and Linux the agent adapts the same steps, but we have not tested them.
+
+## For developers
+
+`packages/identify` is the PDF identifier the skill uses: plain ES modules that run in Node and the browser, no network access. It reports the kind of PDF (vector / scan / outlined / mixed / unknown / unreadable) with per-page evidence, the notation programs it probably came from, and whether Tutti is likely to read it.
+
+```js
+import {identify} from './packages/identify/src/index.js';
+import * as pdfLib from './packages/identify/vendor/pdf-lib.esm.min.js';
+import rules from './packages/identify/data/identify-data.json' with {type: 'json'};
+
+const result = await identify(pdfBytes, {pdfLib, rules});
+```
+
+Command line: `node plugins/sheet-music-pdf-convert/skills/sheet-music-pdf-convert/scripts/identify.mjs score.pdf --json`.
+
+`npm test` runs the tests; `npm run build` rebuilds the single-file script bundled in the skill.
+
+## License
+
+MIT. Audiveris is a separate program under AGPL-3.0; this repository only tells your agent where to get it and how to run it.
