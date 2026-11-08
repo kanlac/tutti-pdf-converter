@@ -8,13 +8,9 @@ Treat the output as a draft to correct, not a finished score. In our test batch 
 
 ## Getting it
 
-- First look for an existing install: on macOS both `/Applications/Audiveris.app` and `~/Applications/Audiveris.app` (or search with `mdfind -name Audiveris.app`); on Windows the Start menu / Program Files; on Linux `which audiveris` and `/opt`. Reuse it if its version is recent, and reuse any OCR language folder you set up before.
-- Only from the official releases: https://github.com/Audiveris/audiveris/releases (audiveris.com is not the project). Pick the asset for the system: macOS arm64 or x86_64 `.dmg`, Ubuntu 22.04/24.04 x86_64 `.deb`, Windows x86_64 `.msi`. Check the SHA-256 against the `digest` the GitHub release API gives for the asset.
-- GitHub release downloads sometimes fail for a while (we saw HTTP 504 for hours, with a tiny error page saved instead of the installer). The checksum catches this; never install a file that fails it. Retry later, or ask the user to download the asset in their browser and tell you where it is.
-- Java is bundled; nothing else is needed to run it.
-- macOS: the app is not signed by Apple. The first launch shows "“Audiveris” Not Opened" and the CLI produces no output until it is allowed. The user can allow it in System Settings → Privacy & Security ("Open Anyway"), or, with their permission, remove the download quarantine flag from the copied app (`xattr -dr com.apple.quarantine Audiveris.app`; a few read-only files inside may need owner write first).
-- macOS: mounting the `.dmg` from a terminal prints the AGPL licence and waits for acceptance; with no answer it fails with "attach canceled", which looks like a broken download but is not.
-- macOS launcher for the command line: `Audiveris.app/Contents/MacOS/Audiveris`.
+- Reuse an existing install if there is one (on macOS it may be in `~/Applications` as well as `/Applications`).
+- Official releases only: https://github.com/Audiveris/audiveris/releases (audiveris.com is not the project). Java is bundled.
+- Command-line launcher on macOS: `Audiveris.app/Contents/MacOS/Audiveris`.
 
 ## OCR language data (do not skip)
 

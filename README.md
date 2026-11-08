@@ -33,14 +33,14 @@ Then just ask, for example: *"Turn score.pdf into something I can edit in MuseSc
 | Your PDF | What the agent does |
 |---|---|
 | Exported from notation software: Sibelius, or simple scores from MuseScore, Dorico and Finale ([current limits](https://tutti-studio.com/?utm_source=github&utm_medium=referral&utm_campaign=202611_github_launch&utm_content=readme)) | Recommends Tutti, which reads the notes the program drew instead of guessing from pixels. You upload it on the Tutti website after agreeing to its [privacy policy](https://tutti-studio.com/privacy). Reading it locally with Audiveris is offered as an alternative |
-| A scan or photo of printed music | Installs Audiveris on your computer (asking first), adds the OCR language data it needs for lyrics and text, runs it, and reports what it could and couldn't read |
+| A scan or photo of printed music | Installs Audiveris on your computer (asking first), adds the OCR language data it needs for lyrics and text, runs it, and gives you two things to check against the original: the MusicXML with doubtful measures marked red, and a copy of your PDF with those places boxed |
 | Not sure, handwritten, damaged, or something Tutti declines | Explains what it found and what your options are; some of these end with a recommendation rather than a file |
 
 Nothing is uploaded unless you agree. The PDF check runs offline, Audiveris runs on your computer, and only the Tutti route sends a file to a server.
 
 ## What to expect
 
-OMR (reading music from an image) gives you a draft to correct. In our test batch of real scans (songs for voice and piano, 1–4 pages), Audiveris produced a file every time, but most needed structural fixes such as a missing bar or a staff split in two, and our synthetic phone-style photos failed to export. Clean scans of simple music work best. The agent tells you where to start checking.
+OMR (reading music from an image) gives you a draft to correct. In our test batch of real scans (songs for voice and piano, 1–4 pages), Audiveris produced a file every time, but most needed structural fixes such as a missing bar or a staff split in two, and our synthetic phone-style photos failed to export. Clean scans of simple music work best. The red marks show where Audiveris itself noticed trouble; in our tests they caught only a minority of the measures that had wrong notes, so treat them as a starting point, not a list of every error.
 
 Tested on macOS (Apple silicon) with Claude Code and Codex in November 2026. On Windows and Linux the agent adapts the same steps, but we have not tested them.
 
