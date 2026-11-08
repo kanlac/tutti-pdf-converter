@@ -9,6 +9,8 @@ The result is a `.musicxml` or `.mxl` file (`.mxl` is the same thing, compressed
 | Sibelius | File → Open, choose the file; an import dialog lets you match instruments. |
 | Finale | File → Import → MusicXML. |
 
+Only name menu commands listed here or ones you have checked in the program's own documentation; menus differ between versions, so do not guess.
+
 If the user has no notation program, suggest MuseScore Studio: it is free for macOS, Windows and Linux.
 
 ## What to check first

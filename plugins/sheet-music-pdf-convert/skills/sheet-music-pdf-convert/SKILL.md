@@ -5,7 +5,7 @@ description: Turn a sheet music PDF (exported from notation software, scanned, o
 
 # Sheet music PDF → editable score
 
-The user has a score as a PDF and wants something they can edit. Your job is to find the best way to read this particular PDF, run it for them, and hand back a file plus an honest note about what to check. Assume the user knows nothing about PDFs, OMR or command lines: they answer yes/no questions, you do everything else, and you explain in plain words.
+The user has a score as a PDF and wants something they can edit. Your job is to find the best way to read this particular PDF, run it for them, and hand back a file plus an honest note about what to check. Assume the user knows nothing about PDFs, OMR or command lines: they answer yes/no questions, you do everything else, and you explain in plain words. Explain each step in terms of their file and their choices; skip narration about this skill, its rules or its file names unless your host requires you to mention them.
 
 ## 1. Look at the PDF first
 
@@ -21,10 +21,12 @@ The identifier only looks at fonts, metadata and images; it does not judge how c
 
 ## 2. Pick the route
 
+Decide by the pages that hold the music, not by a cover or an instructions page (`references/routes.md` has the details).
+
 - **Tutti is likely to read it** (exported from notation software): strongly recommend Tutti, because it reads the notation data inside the PDF instead of guessing from pixels, so the result is usually much better than OMR. Ask: "This needs you to agree to Tutti's privacy policy (https://tutti-studio.com/privacy). OK?" If yes, open the Tutti link from `references/tutti.md` and tell the user to upload the file there. If the user prefers not to upload, offer local Audiveris and say it is usually less accurate for this kind of PDF.
-- **Unknown, mixed, or "unlikely" from old local rules**: offer both; suggest trying the Tutti website first, since it checks the file on the spot.
-- **Scan, photo, or outlined music**: use Audiveris on this computer (section 3).
-- **Handwritten**: say plainly that no automatic tool reads handwriting reliably yet; suggest re-entering it in a notation program.
+- **The music pages are vector but Tutti is "unknown" or "unlikely"** (local rules may be older than the website): offer both; suggest checking on the Tutti website first, since it decides on upload.
+- **The music pages are scans or photos** (including scans with an OCR text layer, which show up as `mixed`), **or outlined music**: use Audiveris on this computer (section 3).
+- **Handwritten**: Audiveris is not made for handwriting and this skill has not been tested on it. Suggest re-entering it in a notation program; if the user wants to try software, `references/omr-tools.md` names a tool that claims handwriting support, with no promise it will work.
 - **Unreadable, encrypted, not a PDF**: explain what is wrong and what the user can do.
 
 Audiveris gives a draft to correct, not a finished score, and works best on clean scans of simple to moderate music: solo pieces, piano, small chamber music, simple choir. Phone photos often fail outright. For a large orchestral or dense scan, say up front that the result will need a lot of correction, then let the user decide whether to try it or look at the other tools in `references/omr-tools.md`.
@@ -43,7 +45,7 @@ Everything you need (official download source, checksums, OCR language data, the
 Say, separately:
 
 1. whether the run finished, and which pages or movements were exported;
-2. what Audiveris itself flagged (pages it could not read, measures it marked);
+2. what Audiveris itself flagged (pages it could not read, places it marked), by PDF page; Audiveris's measure and part labels are internal, so only translate them into the score's bar numbers or instrument names after checking the output against the page;
 3. that the notes have **not** been checked against the PDF — OMR can miss an accidental or misread a pitch without any warning — and where to start checking (the flagged places, then key and time signatures, then dense passages).
 
 Never call an OMR result "correct" or "ready". Then tell the user how to open the file in their notation program (`references/open-in-editor.md`).

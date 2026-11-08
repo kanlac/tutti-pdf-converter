@@ -4,9 +4,9 @@ Tutti (https://tutti-studio.com) converts PDFs exported from notation software (
 
 ## When to recommend it
 
-When the identifier says `tutti.status: likely`, recommend Tutti strongly and explain why in one sentence. When it says `unknown` or `unlikely`, the local rules may simply be older than the website: suggest checking on the website, which decides on upload, and keep the local Audiveris option open.
+Which PDFs go here is decided in SKILL.md and `routes.md`. When you recommend it, explain why in one sentence: it reads the notation the program wrote, so it is usually far more accurate than OMR.
 
-Tutti does not read scans, photos or handwriting. Very large or complex scores may only be partly supported; the website says so after upload and marks the bars it is unsure about.
+Tutti does not read scans, photos or handwriting. Exports from MuseScore, Dorico and Finale are currently supported for simple scores (at most four ordinary staves per system); the website checks the whole PDF on upload and may decline it, and it marks the bars it is unsure about. Check the homepage for the current limits.
 
 ## How the user uses it
 

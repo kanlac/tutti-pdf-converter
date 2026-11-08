@@ -43,7 +43,7 @@ test('browser target bundle runs without Node globals, filesystem or network',as
   }
 });
 
-test('both marketplaces resolve the same self-contained plugin and placeholder skill',async()=>{
+test('both marketplaces resolve the same self-contained plugin and skill',async()=>{
   const claude=JSON.parse(await readFile('.claude-plugin/marketplace.json','utf8'));
   const codex=JSON.parse(await readFile('.agents/plugins/marketplace.json','utf8'));
   assert.equal(claude.plugins[0].source,codex.plugins[0].source.path);
@@ -51,7 +51,11 @@ test('both marketplaces resolve the same self-contained plugin and placeholder s
   for(const file of ['.claude-plugin/plugin.json','.codex-plugin/plugin.json']) {
     assert.equal(JSON.parse(await readFile(path.join(plugin,file),'utf8')).name,'sheet-music-pdf-convert');
   }
-  assert.equal(await readFile(path.join(plugin,'skills/sheet-music-pdf-convert/SKILL.md'),'utf8'),'待编排者撰写\n');
+  const skillDir=path.join(plugin,'skills/sheet-music-pdf-convert');
+  const skill=await readFile(path.join(skillDir,'SKILL.md'),'utf8');
+  assert.match(skill,/^---\nname: sheet-music-pdf-convert\n/);
+  for(const ref of skill.match(/references\/[a-z-]+\.md/g)) await readFile(path.join(skillDir,ref),'utf8');
+  await readFile(path.join(skillDir,'scripts/identify.mjs'),'utf8');
 });
 
 test('bundled CLI is the reproducible projection of the SDK, vendor and data',()=>{
