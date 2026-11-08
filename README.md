@@ -58,7 +58,15 @@ const result = await identify(pdfBytes, {pdfLib, rules});
 
 Command line: `node plugins/sheet-music-pdf-convert/skills/sheet-music-pdf-convert/scripts/identify.mjs score.pdf --json`.
 
-`npm test` runs the tests; `npm run build` rebuilds the single-file script bundled in the skill.
+`packages/review` builds the offline Audiveris review helper into the same skill:
+
+```sh
+node plugins/sheet-music-pdf-convert/skills/sheet-music-pdf-convert/scripts/review.mjs score.mxl original.pdf --out-dir review
+```
+
+Node 22+ is required. The helper finds the matching `.omr` and single `.log` beside the score (or accepts `--omr` / `--log`). It writes a MusicXML copy with suspect measures in red, a PDF copy with review boxes or page notes, and a JSON summary; stdout includes the JSON and an English explanation. Existing files are never overwritten. Hints cover rhythm, unequal part measure counts and Audiveris diagnostics, including INFO messages. OMR mapping uses the exported systems and logical parts, and uncertain locations stay page-level. These hints miss errors such as pitches and accidentals; unmarked music still needs checking.
+
+`npm test` runs the tests; `npm run build` rebuilds both single-file scripts bundled in the skill, and `npm run build:check` checks that they match the source.
 
 ## License
 
