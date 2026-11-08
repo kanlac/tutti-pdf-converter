@@ -17,7 +17,7 @@ Treat the output as a draft to correct, not a finished score. In our test batch 
 Audiveris ships without OCR languages. Without them it still exports notes, but **lyrics, tempo words and instrument names are silently dropped** (same scan: 95 lyric syllables with data, 0 without).
 
 - Use the Tesseract **4.x legacy** data, e.g. `https://github.com/tesseract-ocr/tessdata/raw/4.1.0/<lang>.traineddata` — not `tessdata_fast` or `tessdata_best`.
-- Put the files in one folder and point `TESSDATA_PREFIX` at it for the Audiveris process.
+- Put the files in one persistent folder (not a temp directory that is wiped on restart) and point `TESSDATA_PREFIX` at it for the Audiveris process, so the next score can reuse them.
 - Get `eng` plus the languages of the lyrics and markings (often `deu`, `ita`, `fra`, `lat`). The log line `Installed OCR languages: ...` confirms they were found; `No installed OCR languages` means they were not.
 
 ## Running it
