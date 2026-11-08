@@ -21,9 +21,10 @@ Codex:
 
 ```
 codex plugin marketplace add kanlac/tutti-pdf-converter
+codex plugin add sheet-music-pdf-convert@tutti-pdf-converter
 ```
 
-then open `/plugins` in a Codex CLI session, install `sheet-music-pdf-convert`, and start a new session.
+then start a new Codex session.
 
 Then just ask, for example: *"Turn score.pdf into something I can edit in MuseScore."*
 
