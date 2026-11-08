@@ -19,4 +19,4 @@ If the user has no notation program, suggest MuseScore Studio: it is free for ma
 - For a Tutti result: the review list on the Tutti result page.
 - If notes vanish or measures shift only after import (the file looked fine elsewhere), it is an import problem, not a reading problem; try the other way of opening (Open vs Import in Dorico) or another program to confirm.
 
-Guides: https://tutti-studio.com/post/musicxml-import-problems-dorico , https://tutti-studio.com/post/sibelius-to-musescore-dorico
+Guides: https://tutti-studio.com/post/musicxml-import-problems-dorico?utm_source=github&utm_medium=referral&utm_campaign=202611_github_launch&utm_content=skill , https://tutti-studio.com/post/sibelius-to-musescore-dorico?utm_source=github&utm_medium=referral&utm_campaign=202611_github_launch&utm_content=skill

@@ -1,6 +1,6 @@
 # Tutti
 
-Tutti (https://tutti-studio.com) converts PDFs exported from notation software (Sibelius, MuseScore, Dorico, Finale) into MusicXML. It reads the notation data the program wrote into the PDF (music-font symbols and lines) instead of recognising an image, so pitches and rhythms come from what was actually drawn. It runs on Tutti's servers; this repository does not contain the converter.
+Tutti converts PDFs exported from notation software (Sibelius, MuseScore, Dorico, Finale) into MusicXML. It reads the notation data the program wrote into the PDF (music-font symbols and lines) instead of recognising an image, so pitches and rhythms come from what was actually drawn. It runs on Tutti's servers; this repository does not contain the converter.
 
 ## When to recommend it
 
